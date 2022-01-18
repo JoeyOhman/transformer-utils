@@ -288,6 +288,7 @@ def main():
         type=str,
         help="An optional config json file describing the pre-trained model.",
     )
+    parser.add_argument("--save_path", type=str, default="", help="Path to directory to store resulting files in.")
     args = parser.parse_args()
     # args.path_to_checkpoint = "/home/joey/code/Megatron-LM/model_optim_rng.pt"
     # args.path_to_checkpoint = "/home/joey/code/Megatron-LM/model_optim_rng_large.pt"
@@ -319,12 +320,13 @@ def main():
     if args.print_checkpoint_structure:
         recursive_print(None, output_state_dict)
 
+    save_path = args.save_path if args.save_path else basename
     # Store the config to file.
     print("Saving config")
-    config.save_pretrained(basename)
+    config.save_pretrained(save_path)
 
     # Store the state_dict to file.
-    output_checkpoint_file = os.path.join(basename, "pytorch_model.bin")
+    output_checkpoint_file = os.path.join(save_path, "pytorch_model.bin")
     print(f'Saving checkpoint to "{output_checkpoint_file}"')
     torch.save(output_state_dict, output_checkpoint_file)
 
