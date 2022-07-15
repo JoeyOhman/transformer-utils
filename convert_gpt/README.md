@@ -19,6 +19,6 @@ This looks promising, but so far no guarantees that everything works correctly.
 1. Change directory to this repository's `convert_gpt/`
 2. Have the converted model path ready
 3. Have the SentencePiece tokenizer path ready
-4. Set paths in global variables in `convert_gpt/convert_megatron_gpt2_checkpoint.py`
+4. Set paths in global variables in `convert_gpt/hf_play.py`
 5. Change `text` in `main()` to something nice
 6. Profit
